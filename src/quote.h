@@ -10,8 +10,6 @@ using namespace std;
 
 #include <string.h>
 
-#include "config.h"
-
 class Quote {
 	private:
 		string m_bank;

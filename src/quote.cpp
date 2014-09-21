@@ -1,5 +1,4 @@
 #include "quote.h"
-#include "config.h"
 #include "log.h"
 using namespace std;
 #include <algorithm>
