@@ -25,7 +25,8 @@ int main(int argc, char * argv[]) {
 	Quotes quotes;
 	int i=0;
 
-	quotes.RegisterCallback(&CheckArbitrage);
+	//quotes.RegisterCallback(&CheckArbitrage);
+	quotes.RegisterCallback(&CheckAllArbitrage);
 
 	while(getline(ifs, line))
 	{

@@ -27,3 +27,37 @@ bool CheckArbitrage(Quotes * quotes)
 	}
 	return false;
 }
+
+bool CheckAllArbitrage(Quotes * quotes)
+{
+	bool found = false;
+	vector<Quote> asks = quotes->GetAsks();
+	vector<Quote> bids = quotes->GetBids();
+	std::vector<Quote>::iterator ask;
+	std::vector<Quote>::iterator bid;
+	for( ask = asks.begin(); ask != asks.end(); ++ask )
+	{
+		for( bid = bids.begin(); bid != bids.end(); ++bid) {
+			if (ask->GetPrice() < bid->GetPrice()) {
+				uint64_t avail_time;
+				uint32_t volume;
+				if (ask->GetTime() >  bid->GetTime()) {
+					avail_time = ask->GetTime();
+				} else { 
+					avail_time = bid->GetTime();
+				}
+				if (ask->GetVolume() < bid->GetVolume()) {
+					volume = ask->GetVolume();
+				} else { 
+					volume = bid->GetVolume();
+				}
+				cout << avail_time << "," << ask->GetBank() << "," << bid->GetBank() << endl;
+				INFO("At %lld, buy %ld from %s at %f and sell to %s at %f", avail_time, volume, ask->GetBank().c_str(), ask->GetPrice(), bid->GetBank().c_str(), bid->GetPrice());
+				found = true;
+			} else {
+				break;
+			}
+		}
+	}
+	return found;
+}

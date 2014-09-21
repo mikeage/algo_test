@@ -42,6 +42,8 @@ class Quotes {
 		int GetByName(string bank, vector<Quote> vect); //OPTIMIZE: there's no way this can be good, even if it works. There must be a better way to return a pointer or something to the element to update
 		Quote * GetLowestAsk(void) {return &m_asks[0]; }; //TODO: we might not need this. More precisely, we might need all open asks
 		Quote * GetHighestBid(void) {return &m_bids[0]; };
+		vector<Quote> GetAsks(void) {return m_asks; };
+		vector<Quote> GetBids(void) {return m_bids; };
 		bool RegisterCallback(pQuotesCallback cb);
 		bool DeregisterCallback(pQuotesCallback cb);
 		// Debugging only
