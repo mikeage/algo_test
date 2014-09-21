@@ -7,11 +7,19 @@
 
 using namespace std;
 
-int main(void) {
+int main(int argc, char * argv[]) {
 
 	INFO("Starting");
 
-	ifstream ifs("quotes_for_test.txt");
+	// TODO: use getopt
+	
+	if (argc != 2) {
+		ERROR("Please call %s <input_file_name>\n", argv[0]);
+		exit(1);
+	}
+
+	INFO("Reading from %s\n", argv[1]);
+	ifstream ifs(argv[1]);
 	string line;
 
 	Quotes quotes;
