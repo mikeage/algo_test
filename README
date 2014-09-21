@@ -1,0 +1,6 @@
+Sample code for Senior Developer interview.
+
+Compilation is via ./autogen.sh && ./configure && make and then either make install or ./src/algo_test
+
+Debugging can be enabled by passing --enable-debug to configure.
+Trace logging can be enabled by passing --enable-trace to configure.
